@@ -193,5 +193,116 @@ class TestGamesRoutes(unittest.TestCase):
         # Flask should return 404 for routes that don't match the <int:id> pattern
         self.assertEqual(response.status_code, 404)
 
+    def test_filter_games_by_publisher(self) -> None:
+        """Test filtering games by publisher_id"""
+        # Get the first publisher's ID
+        with self.app.app_context():
+            publisher = db.session.query(Publisher).filter_by(
+                name=self.TEST_DATA["publishers"][0]["name"]
+            ).first()
+            publisher_id = publisher.id
+        
+        # Act
+        response = self.client.get(f'{self.GAMES_API_PATH}?publisher_id={publisher_id}')
+        data = self._get_response_data(response)
+        
+        # Assert
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(data), 1)
+        self.assertEqual(data[0]['title'], self.TEST_DATA["games"][0]["title"])
+
+    def test_filter_games_by_category(self) -> None:
+        """Test filtering games by category_id"""
+        # Get the second category's ID
+        with self.app.app_context():
+            category = db.session.query(Category).filter_by(
+                name=self.TEST_DATA["categories"][1]["name"]
+            ).first()
+            category_id = category.id
+        
+        # Act
+        response = self.client.get(f'{self.GAMES_API_PATH}?category_id={category_id}')
+        data = self._get_response_data(response)
+        
+        # Assert
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(data), 1)
+        self.assertEqual(data[0]['title'], self.TEST_DATA["games"][1]["title"])
+
+    def test_filter_games_by_publisher_and_category(self) -> None:
+        """Test filtering games by both publisher_id and category_id"""
+        # Get IDs for the first game's publisher and category
+        with self.app.app_context():
+            publisher = db.session.query(Publisher).filter_by(
+                name=self.TEST_DATA["publishers"][0]["name"]
+            ).first()
+            category = db.session.query(Category).filter_by(
+                name=self.TEST_DATA["categories"][0]["name"]
+            ).first()
+            publisher_id = publisher.id
+            category_id = category.id
+        
+        # Act
+        response = self.client.get(
+            f'{self.GAMES_API_PATH}?publisher_id={publisher_id}&category_id={category_id}'
+        )
+        data = self._get_response_data(response)
+        
+        # Assert
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(data), 1)
+        self.assertEqual(data[0]['title'], self.TEST_DATA["games"][0]["title"])
+
+    def test_filter_games_no_match(self) -> None:
+        """Test filtering returns empty list when no games match"""
+        # Act - filter by non-existent publisher_id
+        response = self.client.get(f'{self.GAMES_API_PATH}?publisher_id=999')
+        data = self._get_response_data(response)
+        
+        # Assert
+        self.assertEqual(response.status_code, 200)
+        self.assertIsInstance(data, list)
+        self.assertEqual(len(data), 0)
+
+    def test_filter_games_invalid_params_ignored(self) -> None:
+        """Test that invalid filter parameters are ignored"""
+        # Act - invalid string for publisher_id should be ignored
+        response = self.client.get(f'{self.GAMES_API_PATH}?publisher_id=invalid')
+        data = self._get_response_data(response)
+        
+        # Assert - returns all games since invalid param is ignored
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(data), len(self.TEST_DATA["games"]))
+
+    def test_get_publishers(self) -> None:
+        """Test retrieval of all publishers"""
+        # Act
+        response = self.client.get('/api/publishers')
+        data = self._get_response_data(response)
+        
+        # Assert
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(data), len(self.TEST_DATA["publishers"]))
+        
+        # Check all publishers are returned with correct structure
+        for publisher in data:
+            self.assertIn('id', publisher)
+            self.assertIn('name', publisher)
+
+    def test_get_categories(self) -> None:
+        """Test retrieval of all categories"""
+        # Act
+        response = self.client.get('/api/categories')
+        data = self._get_response_data(response)
+        
+        # Assert
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(data), len(self.TEST_DATA["categories"]))
+        
+        # Check all categories are returned with correct structure
+        for category in data:
+            self.assertIn('id', category)
+            self.assertIn('name', category)
+
 if __name__ == '__main__':
     unittest.main()
