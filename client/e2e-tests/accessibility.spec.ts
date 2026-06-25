@@ -53,12 +53,17 @@ test.describe('Accessibility Tests', () => {
     const menu = page.locator('#menu');
     await expect(menu).not.toHaveClass(/hidden/);
     
-    // Tab to first menu item
-    await page.keyboard.press('Tab');
+    // Some Chromium builds auto-focus the first menu item when a disclosure
+    // button is activated, others leave focus on the button. Tab forward only
+    // if focus has not already moved into the menu.
     const homeLink = page.locator('#menu a[href="/"]');
+    const homeAlreadyFocused = await homeLink.evaluate((el) => el === document.activeElement);
+    if (!homeAlreadyFocused) {
+      await page.keyboard.press('Tab');
+    }
     await expect(homeLink).toBeFocused();
     
-    // Tab to second menu item
+    // Tab to the next menu item
     await page.keyboard.press('Tab');
     const aboutLink = page.locator('#menu a[href="/about"]');
     await expect(aboutLink).toBeFocused();

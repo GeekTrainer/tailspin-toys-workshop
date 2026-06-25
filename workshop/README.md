@@ -10,9 +10,9 @@ GitHub Copilot CLI is a powerful agentic coding assistant that runs directly in 
 
 By the end of this workshop, you will be able to:
 
-1. **Understand custom instructions** - Provide context and guidelines to improve code generation quality
-2. **Install and configure GitHub Copilot CLI** - Set up Copilot CLI in a codespace and authenticate with GitHub
-3. **Work with MCP servers** - Extend Copilot CLI's capabilities by connecting to external services
+1. **Install and configure GitHub Copilot CLI** - Set up Copilot CLI in a codespace and authenticate with GitHub
+2. **Work with MCP servers** - Extend Copilot CLI's capabilities by connecting to external services
+3. **Understand custom instructions** - Provide context and guidelines to improve code generation quality
 4. **Generate and modify code** - Leverage AI to create new features from the terminal
 5. **Use agent skills** - Enhance Copilot's capabilities with specialized skills
 6. **Create custom agents** - Build specialized agents for specific tasks
@@ -43,9 +43,9 @@ This full-stack application provides an excellent playground for exploring Copil
 | Exercise | Topic | Description |
 |----------|-------|-------------|
 | [0. Prerequisites][ex0] | Setup | Create your repository and codespace |
-| [1. Custom Instructions][ex1] | Context | Learn how instruction files guide Copilot |
-| [2. Installing Copilot CLI][ex2] | Installation | Install and authenticate Copilot CLI |
-| [3. MCP Servers][ex3] | External Tools | Connect to GitHub and other services via MCP |
+| [1. Installing Copilot CLI][ex1] | Installation | Install and authenticate Copilot CLI |
+| [2. MCP Servers][ex2] | External Tools | Connect to GitHub and other services via MCP |
+| [3. Custom Instructions][ex3] | Context | Learn how instruction files guide Copilot |
 | [4. Generating Code][ex4] | Code Generation | Use plan mode and generate features |
 | [5. Agent Skills][ex5] | Skills | Enhance Copilot with specialized skills |
 | [6. Custom Agents][ex6] | Agents | Create and use custom agents |
@@ -74,9 +74,9 @@ This full-stack application provides an excellent playground for exploring Copil
 *Happy coding with GitHub Copilot CLI! 🚀*
 
 [ex0]: ./0-prereqs.md
-[ex1]: ./1-custom-instructions.md
-[ex2]: ./2-install-copilot-cli.md
-[ex3]: ./3-mcp.md
+[ex1]: ./1-install-copilot-cli.md
+[ex2]: ./2-mcp.md
+[ex3]: ./3-custom-instructions.md
 [ex4]: ./4-generating-code.md
 [ex5]: ./5-agent-skills.md
 [ex6]: ./6-custom-agents.md

@@ -16,10 +16,10 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: "3.13"
           cache: "pip"
@@ -33,27 +33,23 @@ jobs:
 
   frontend-tests:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     permissions:
       contents: read
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: "npm"
-          cache-dependency-path: "./client/package.json"
+      - name: Install Python
+        run: |
+          apt-get update
+          apt-get install -y python3 python3-venv python3-pip
 
       - name: Install JavaScript dependencies
         working-directory: ./client
         run: npm ci
-
-      - name: Install Playwright browsers
-        working-directory: ./client
-        run: npx playwright install --with-deps
 
       - name: Run environment setup
         run: bash ./scripts/setup-env.sh
@@ -65,7 +61,7 @@ jobs:
           CI: true
 
       - name: Upload Playwright report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: playwright-report

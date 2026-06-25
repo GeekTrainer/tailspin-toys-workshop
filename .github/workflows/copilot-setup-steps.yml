@@ -12,7 +12,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       # Backend setup - Python
       - name: Set up Python
@@ -38,4 +38,4 @@ jobs:
 
       - name: Install Playwright
         working-directory: ./client
-        run: npx playwright install
+        run: npx --yes playwright install --with-deps chromium

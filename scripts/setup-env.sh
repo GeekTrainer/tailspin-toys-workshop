@@ -21,7 +21,7 @@ pip install -r server/requirements.txt
 echo "Installing client dependencies..."
 cd client || exit 1
 npm install
-npx playwright install
+npx --yes playwright install --with-deps chromium
 
 # Return to project root
 cd "$PROJECT_ROOT"

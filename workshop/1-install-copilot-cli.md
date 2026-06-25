@@ -1,6 +1,6 @@
-# Exercise 2 - Installing GitHub Copilot CLI
+# Exercise 1 - Installing GitHub Copilot CLI
 
-| [← Previous lesson: Custom Instructions][previous-lesson] | [Next lesson: MCP Servers →][next-lesson] |
+| [← Previous lesson: Prerequisites][previous-lesson] | [Next lesson: MCP Servers →][next-lesson] |
 |:--|--:|
 
 [GitHub Copilot CLI][about-copilot-cli] is a powerful agentic coding assistant that runs in your terminal, enabling you to explore codebases, generate code, run commands, and interact with external tools - all from the command line.
@@ -47,7 +47,7 @@ GitHub Codespaces come with Node.js pre-installed, so you can use npm to install
    copilot --version
    ```
 
-   You should see the version number displayed (e.g., `v0.0.393`).
+   You should see the version number displayed (e.g., `v1.x.x`).
 
 > [!TIP]
 > If you encounter permission errors, you may need to use `sudo npm install -g @github/copilot` on some systems. However, this shouldn't be necessary in GitHub Codespaces.
@@ -56,18 +56,21 @@ GitHub Codespaces come with Node.js pre-installed, so you can use npm to install
 
 On first launch, Copilot CLI will prompt you to authenticate with your GitHub account.
 
-1. Start Copilot CLI:
+1. Start Copilot CLI in YOLO mode, which automatically approves any tool, file, or URL access for the rest of the workshop. The `--enable-all-github-mcp-tools` flag turns on the full set of GitHub MCP tools (more on that in the next exercise):
 
    ```bash
-   copilot
+   copilot --yolo --enable-all-github-mcp-tools
    ```
 
-2. If you're not currently logged in, you'll see a prompt to authenticate. Copilot CLI will display a device code and ask you to visit a URL.
-3. Follow the on-screen instructions:
+> [!IMPORTANT]
+> `--yolo` is equivalent to combining `--allow-all-tools`, `--allow-all-paths`, and `--allow-all-urls`. Copilot will have the same access you do — files, network, and shell — without asking you to approve each action. This is convenient for the workshop in a disposable codespace, but read the [security considerations][security-considerations] before using it on code you care about.
+
+2. If you're not currently logged in, Copilot CLI will prompt you to run the `/login` slash command. Enter `/login` and follow the on-screen instructions:
    - Open the provided URL in your browser
    - Enter the device code when prompted
    - Authorize Copilot CLI to access your GitHub account
-4. Once authenticated, you'll see the Copilot CLI prompt, ready to accept your questions and commands.
+
+3. Once authenticated, you'll see the Copilot CLI prompt, ready to accept your questions and commands.
 
 > [!NOTE]
 > In a codespace, you may already be authenticated through your GitHub session. If Copilot CLI starts without prompting for authentication, you're good to go!
@@ -89,7 +92,7 @@ Let's make sure Copilot CLI is properly installed and connected.
 1. If you exited Copilot CLI, start it again:
 
    ```bash
-   copilot
+   copilot --yolo --enable-all-github-mcp-tools
    ```
 
 2. Ask Copilot a simple question to verify it's working:
@@ -114,7 +117,7 @@ Congratulations! You've successfully installed and authenticated GitHub Copilot 
 - trust a directory for Copilot CLI to work with.
 - verify the installation is working correctly.
 
-Now that Copilot CLI is installed, let's start using it to explore and modify code! Continue to [Exercise 3 - Using Copilot CLI][next-lesson].
+Now that Copilot CLI is installed, let's extend it with external tools. Continue to [Exercise 2 - MCP Servers][next-lesson].
 
 ## Resources
 
@@ -124,11 +127,12 @@ Now that Copilot CLI is installed, let's start using it to explore and modify co
 
 ---
 
-| [← Previous lesson: Custom Instructions][previous-lesson] | [Next lesson: MCP Servers →][next-lesson] |
+| [← Previous lesson: Prerequisites][previous-lesson] | [Next lesson: MCP Servers →][next-lesson] |
 |:--|--:|
 
-[previous-lesson]: ./1-custom-instructions.md
-[next-lesson]: ./3-mcp.md
+[previous-lesson]: ./0-prereqs.md
+[next-lesson]: ./2-mcp.md
 [install-copilot-cli]: https://docs.github.com/copilot/how-tos/set-up/install-copilot-cli
 [about-copilot-cli]: https://docs.github.com/copilot/concepts/agents/about-copilot-cli
 [using-copilot-cli]: https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli
+[security-considerations]: https://docs.github.com/copilot/concepts/agents/about-copilot-cli#security-considerations

@@ -1,6 +1,6 @@
 # Exercise 0: Prerequisites
 
-| | [Next lesson: Custom Instructions →][next-lesson] |
+| | [Next lesson: Installing Copilot CLI →][next-lesson] |
 |:--|--:|
 
 Before you get started on the lab, there's a few tasks you need to complete to get everything ready. You need to get a copy of the repository which includes the code, then spin up a [codespace][codespaces] to use to create your code.
@@ -33,10 +33,10 @@ Next up, you'll be using a codespace to complete the lab exercises. [GitHub Code
 
     ![Create a new codespace](./images/0-create-codespace.png)
 
-The creation of the codespace will take several minutes, although it's still far quicker than having to manually install all the services! That said, you can use this time to explore other features of GitHub Copilot, which we'll turn your attention to next!
+The creation of the codespace can take **up to 10 minutes** while the container builds, dependencies install, and Playwright sets up its browsers. It's still far quicker than having to manually install all the services! That said, you can use this time to explore other features of GitHub Copilot, which we'll turn your attention to next!
 
 > [!IMPORTANT]
-> You'll return to the codespace in a future exercise. For the time being, leave it open in a tab in your browser.
+> Wait until the codespace is fully ready before starting Exercise 1. You'll know setup is complete when the terminal stops printing install output and you see a normal shell prompt. You'll return to the codespace in a future exercise — for the time being, leave it open in a tab in your browser.
 
 > [!NOTE]
 > This workshop is built to run inside of a codespace or container. This ensures the environment you're working in has all of the necessary prerequisites installed and you'll have a smooth experience. If you wish to run the workshop locally on your system, you will need recent versions of Node.js and Python installed, as well as Visual Studio Code.
@@ -49,7 +49,7 @@ Congratulations, you have created a copy of the lab repository! You also began t
 
 ## Next step
 
-Let's explore how you can provide context to Copilot using instruction files! Continue to [Exercise 1 - Custom Instructions][next-lesson].
+Let's get Copilot CLI installed! Continue to [Exercise 1 - Installing Copilot CLI][next-lesson].
 
 ## Resources
 
@@ -59,10 +59,10 @@ Let's explore how you can provide context to Copilot using instruction files! Co
 
 ---
 
-| | [Next lesson: Custom Instructions →][next-lesson] |
+| | [Next lesson: Installing Copilot CLI →][next-lesson] |
 |:--|--:|
 
 [codespaces]: https://github.com/features/codespaces
 [template-repository]: https://docs.github.com/repositories/creating-and-managing-repositories/creating-a-template-repository
 [codespaces-quickstart]: https://docs.github.com/codespaces/getting-started/quickstart
-[next-lesson]: ./1-custom-instructions.md
+[next-lesson]: ./1-install-copilot-cli.md
