@@ -1,13 +1,13 @@
 # Exercise 4 - Adding project features with GitHub Copilot CLI
 
-| [← Previous lesson: MCP Servers][previous-lesson] | [Next lesson: Agent Skills →][next-lesson] |
+| [← Previous lesson: Custom Instructions][previous-lesson] | [Next lesson: Agent Skills →][next-lesson] |
 |:--|--:|
 
 As you might expect, the core tasks you'll perform with GitHub Copilot CLI is to add features, functionality, and code to a project. As you've already explored, you can add instructions files and MCP servers to help guide Copilot and ensure you're getting the code you expect, following the best practices laid out by the team and community. Let's take one of the issues we generated previously and ask Copilot to help us implement it.
 
 ## Scenario
 
-The time has come to finally implement filtering in the project. You've already got the issue in GitHub. Let's have Copilot retrieve the details from the issue and put together a plan to implement it. Then we'll get Copilot on the job to create the code and run the tests.
+The time has come to finally implement filtering in the project. You've already got the issue in GitHub, and the **/publishers** endpoint generated in the previous exercise is ready to be wired up. Let's have Copilot retrieve the details from the issue and put together a plan to implement the rest — including a matching endpoint for categories and the frontend UI.
 
 In this exercise, you will:
 
@@ -27,15 +27,15 @@ You'll start the process of creating the new functionality by utilizing plan mod
 3. If not already running, start Copilot CLI by issuing the following command in the terminal window:
 
     ```bash
-    copilot --allow-all-tools
+    copilot --yolo --enable-all-github-mcp-tools
     ```
 
 4. If already running, clear Copilot's context by sending the `/clear` command in the prompt.
 5. Switch Copilot CLI into plan mode by selecting <kbd>Shift</kbd>+<kbd>Tab</kbd> until you see **Plan mode** just below the prompt window.
-6. Enter the following prompt into Copilot CLI to have it retrieve the issue from your repository and put forth a plan for implementing the functionality:
+6. Enter the following prompt into Copilot CLI to have it retrieve the issue from your repository and put forth a plan for implementing the functionality. Note we explicitly call out the existing **/publishers** endpoint so Copilot reuses it rather than regenerating it:
 
     ```
-    Retrieve the issue on the repository related to adding filtering. Help me build a good plan to implement this functionality.
+    Retrieve the issue on the repository related to adding filtering. The /publishers endpoint already exists in server/routes/publishers.py — please reuse it. You'll need to add a matching /categories endpoint and wire up the frontend filtering UI. Help me build a good plan to implement this functionality.
     ```
 
 7. Copilot may ask follow-up questions as it builds out its plan. As those arise, answer them based on how you'd build out the functionality.
@@ -52,10 +52,14 @@ You'll start the process of creating the new functionality by utilizing plan mod
 
 All AI code needs to be reviewed before being merged into production. Let's take the time now to explore the files Copilot created and modified in implementing the new feature.
 
-1. Hide the terminal window in your codespace by selecting <kbd>Ctrl</kbd>+<kbd>\`</kbd>.
-2. Select **Source Control** in your codespace.
-3. Note the files changed. You should see updates to files such as **games.py**, the Games API, and **test_games.py**, the tests for that API. You should also see new files created, such as Svelte components for the new filter functionality, and Playwright tests to validate the frontend.
-4. Open the files and explore the changes. In particular, notice the comment sections which have been added. All of this comes from the instructions files you worked on previously in this workshop.
+1. Inside Copilot CLI, send the following slash command to see all of the file changes in the current directory:
+
+    ```text
+    /diff
+    ```
+
+2. Review the diff. You should see updates to files such as **games.py**, the Games API, and **test_games.py**, the tests for that API. You should also see new files created, such as Svelte components for the new filter functionality, and Playwright tests to validate the frontend.
+3. Open a few of the changed files in the codespace editor and explore them. In particular, notice the comment sections which have been added. All of this comes from the instructions files you worked on previously in this workshop.
 
 ## Summary and next steps
 
@@ -74,10 +78,10 @@ Of course, the next step from here is to [create the PR][next-lesson], which wil
 
 ---
 
-| [← Previous lesson: MCP Servers][previous-lesson] | [Next lesson: Agent Skills →][next-lesson] |
+| [← Previous lesson: Custom Instructions][previous-lesson] | [Next lesson: Agent Skills →][next-lesson] |
 |:--|--:|
 
-[previous-lesson]: ./3-mcp.md
+[previous-lesson]: ./3-custom-instructions.md
 [next-lesson]: ./5-agent-skills.md
 [using-copilot-cli]: https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli
 [about-copilot-cli]: https://docs.github.com/copilot/concepts/agents/about-copilot-cli

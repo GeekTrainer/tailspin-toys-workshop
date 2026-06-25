@@ -54,7 +54,7 @@ Skills are loaded dynamically when the agent determines they're necessary. The d
 Because Tailspin Toys has a set of requirements for creating PRs, they created a skill to help AI tools be able to generate PRs which follow these guidelines. Let's explore the skill to understand what it'll do.
 
 1. Return to your codespace.
-2. Open **.github/skills/branches-commits-prs/SKILL.md**.
+2. Open **.github/skills/branching-commits-prs/SKILL.md**.
 3. Note the name and description. Notice how the description highlights the scenario in which it should be used, which is whenever a request is made to create a pull request or committing code.
 4. Read through the skill. Notice the rules are defined about how branches should be created, commits generated, and the contents of the pull request.
 
@@ -67,7 +67,7 @@ As highlighted previously, skills are automatically invoked by Copilot CLI. As a
 3. If not already running, start Copilot CLI by issuing the following command in the terminal window:
 
     ```bash
-    copilot --allow-all-tools
+    copilot --yolo --enable-all-github-mcp-tools
     ```
 
 4. Ask Copilot to create a PR by using the following prompt:
@@ -76,7 +76,7 @@ As highlighted previously, skills are automatically invoked by Copilot CLI. As a
     Can you please create a pull request for me!
     ```
 
-5. Copilot will acknowledge the request. After a few moments, you'll notice Copilot will indicate it's utilizing the **branches-commits-prs** skill.
+5. Copilot will acknowledge the request. After a few moments, you'll notice Copilot will indicate it's utilizing the **branching-commits-prs** skill.
 
     ![Screenshot of the agent skill being called by Copilot CLI](./images/5-agent-skill.png)
 
