@@ -53,12 +53,12 @@ test.describe('Accessibility Tests', () => {
     const menu = page.locator('#menu');
     await expect(menu).not.toHaveClass(/hidden/);
     
-    // Tab to first menu item
-    await page.keyboard.press('Tab');
+    // Opening the menu via Enter on the disclosure button moves focus to the
+    // first menu item, so the home link should already be focused.
     const homeLink = page.locator('#menu a[href="/"]');
     await expect(homeLink).toBeFocused();
     
-    // Tab to second menu item
+    // Tab to the next menu item
     await page.keyboard.press('Tab');
     const aboutLink = page.locator('#menu a[href="/about"]');
     await expect(aboutLink).toBeFocused();
