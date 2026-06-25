@@ -33,10 +33,10 @@ Next up, you'll be using a codespace to complete the lab exercises. [GitHub Code
 
     ![Create a new codespace](./images/0-create-codespace.png)
 
-The creation of the codespace will take several minutes, although it's still far quicker than having to manually install all the services! That said, you can use this time to explore other features of GitHub Copilot, which we'll turn your attention to next!
+The creation of the codespace can take **up to 10 minutes** while the container builds, dependencies install, and Playwright sets up its browsers. It's still far quicker than having to manually install all the services! That said, you can use this time to explore other features of GitHub Copilot, which we'll turn your attention to next!
 
 > [!IMPORTANT]
-> You'll return to the codespace in a future exercise. For the time being, leave it open in a tab in your browser.
+> Wait until the codespace is fully ready before starting Exercise 1. You'll know setup is complete when the terminal stops printing install output and you see a normal shell prompt. You'll return to the codespace in a future exercise — for the time being, leave it open in a tab in your browser.
 
 > [!NOTE]
 > This workshop is built to run inside of a codespace or container. This ensures the environment you're working in has all of the necessary prerequisites installed and you'll have a smooth experience. If you wish to run the workshop locally on your system, you will need recent versions of Node.js and Python installed, as well as Visual Studio Code.
