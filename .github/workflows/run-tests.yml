@@ -33,6 +33,8 @@ jobs:
 
   frontend-tests:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     permissions:
       contents: read
     
@@ -40,20 +42,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
-          node-version: "22"
-          cache: "npm"
-          cache-dependency-path: "./client/package.json"
+          python-version: "3.13"
+          cache: "pip"
 
       - name: Install JavaScript dependencies
         working-directory: ./client
         run: npm ci
-
-      - name: Install Playwright browsers
-        working-directory: ./client
-        run: npx --yes playwright install --with-deps chromium
 
       - name: Run environment setup
         run: bash ./scripts/setup-env.sh
