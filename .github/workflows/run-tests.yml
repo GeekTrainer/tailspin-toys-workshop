@@ -53,7 +53,7 @@ jobs:
 
       - name: Install Playwright browsers
         working-directory: ./client
-        run: npx playwright install --with-deps
+        run: npx --yes playwright install --with-deps chromium
 
       - name: Run environment setup
         run: bash ./scripts/setup-env.sh

@@ -16,7 +16,7 @@ pip install -r server\requirements.txt
 Write-Host "Installing client dependencies..."
 Set-Location client
 npm install
-npx playwright install --with-deps
+npx --yes playwright install --with-deps chromium
 
 # Return to project root
 Set-Location $ProjectRoot

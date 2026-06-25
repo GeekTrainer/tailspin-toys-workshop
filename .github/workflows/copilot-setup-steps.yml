@@ -38,4 +38,4 @@ jobs:
 
       - name: Install Playwright
         working-directory: ./client
-        run: npx playwright install
+        run: npx --yes playwright install --with-deps chromium
