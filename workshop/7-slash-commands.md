@@ -3,7 +3,7 @@
 | [← Previous lesson: Custom Agents][previous-lesson] | [Next lesson: Review →][next-lesson] |
 |:--|--:|
 
-Like any good CLI tool, GitHub Copilot CLI includes many slash commands to interact with it. These commands expose advanced functionality, "behind-the-scenes" information, or additional configuration options. You've already explored a couple with `/clear` to clear context and `/mcp` to register MCP servers. Let's explore a couple of other powerful ones, including `/context`, `/model` and `/share`.
+Like any good CLI tool, GitHub Copilot CLI includes many slash commands to interact with it. These commands expose advanced functionality, "behind-the-scenes" information, or additional configuration options. You've already explored a couple with `/clear` to clear context and `/mcp` to register MCP servers. Let's explore a couple of other powerful ones, including `/context`, `/rename`, `/resume`, and `/share`.
 
 ## Scenario
 
@@ -13,7 +13,8 @@ In this exercise you will use:
 
 - `/share` to create a GitHub gist to share your session with the team.
 - `/context` to see the context Copilot CLI is currently using.
-- `/model` to explore the list of available models and select a new one if you so desire.
+- `/rename` to give your current session a clear, meaningful name.
+- `/resume` to reopen a previous session and continue where you left off.
 
 ## Sharing a session
 
@@ -88,23 +89,29 @@ In most sessions with Copilot context will be managed efficiently by Copilot its
 > [!IMPORTANT]
 > Again, the majority of the time, Copilot will manage its context without direct interaction from you. If you notice Copilot is a bit confused by older information, or are about to switch to an unrelated task, then you might consider using the manual commands.
 
-## Choosing your model
+## Naming and resuming sessions
 
-Different models have different strengths, and different developers have different models. Copilot CLI allows you to list and select the model you wish to use!
+As you work on multiple tasks, giving sessions clear names and returning to previous sessions can make your workflow much easier to manage.
 
 1. Return to your codespace.
 2. If hidden, show the terminal window by selecting <kbd>Ctrl</kbd>+<kbd>\`</kbd>.
-3. Display the list of models by sending the following slash command to Copilot CLI:
+3. Rename your current session by sending the following slash command to Copilot CLI:
 
     ```
-    /model
+    /rename exercise-7-slash-commands
     ```
 
-4. Note the list of models. Each model will have both its name and cost-per-request modifier listed next to it.
-5. If you wish, select a new model! Or select <kbd>Esc</kbd> to exit the model list.
+4. Note the updated session name in the interface.
+5. Open the session picker to resume a session by sending:
 
-> [!IMPORTANT]
-> Model selection persists in Copilot CLI.
+    ```
+    /resume
+    ```
+
+6. Explore the list of available sessions and select one to reopen it, or press <kbd>Esc</kbd> to stay in your current session.
+
+> [!NOTE]
+> You can use `/rename` any time to keep sessions easy to identify, and `/resume` whenever you want to pick up previous work with its saved context.
 
 ## Summary and next steps
 
@@ -112,7 +119,8 @@ Using slash commands in Copilot CLI allows you to configure it, share sessions, 
 
 - `/share` to create a GitHub gist to share your session with the team.
 - `/context` to see the context Copilot CLI is currently using.
-- `/model` to explore the list of available models and select a new one if you so desire.
+- `/rename` to give your current session a clear, meaningful name.
+- `/resume` to reopen a previous session and continue where you left off.
 
 There are of course more slash commands available, and more to explore with Copilot CLI! Let's close out our journey by [reviewing what we've learned][next-lesson] and some next steps to continue learning.
 
@@ -122,7 +130,7 @@ There are of course more slash commands available, and more to explore with Copi
 - [About Copilot CLI][about-copilot-cli]
 - [Context Management in Copilot CLI][context-management]
 - [Share Sessions with Copilot CLI][share-sessions]
-- [Selecting Models in Copilot CLI][selecting-models]
+- [Copilot CLI command reference][cli-command-reference]
 
 ---
 
@@ -135,5 +143,5 @@ There are of course more slash commands available, and more to explore with Copi
 [about-copilot-cli]: https://docs.github.com/copilot/concepts/agents/about-copilot-cli
 [context-management]: https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli#context-management
 [share-sessions]: https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli#share-sessions
-[selecting-models]: https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli#select-an-llm
+[cli-command-reference]: https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference
 [img-context-window]: ./images/7-context-window.png
