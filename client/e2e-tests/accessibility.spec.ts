@@ -53,9 +53,14 @@ test.describe('Accessibility Tests', () => {
     const menu = page.locator('#menu');
     await expect(menu).not.toHaveClass(/hidden/);
     
-    // Opening the menu via Enter on the disclosure button moves focus to the
-    // first menu item, so the home link should already be focused.
+    // Some Chromium builds auto-focus the first menu item when a disclosure
+    // button is activated, others leave focus on the button. Tab forward only
+    // if focus has not already moved into the menu.
     const homeLink = page.locator('#menu a[href="/"]');
+    const homeAlreadyFocused = await homeLink.evaluate((el) => el === document.activeElement);
+    if (!homeAlreadyFocused) {
+      await page.keyboard.press('Tab');
+    }
     await expect(homeLink).toBeFocused();
     
     // Tab to the next menu item
