@@ -74,10 +74,10 @@ To see the impact of custom instructions, you'll start by sending a prompt with 
    ```
 
 4. If Copilot CLI is already running, clear its context by sending the `/clear` command in the prompt.
-5. Set the model by sending the `/model` command in the prompt and selecting **Claude Sonnet 4.5**.
+5. Set the model by sending the `/model` command in the prompt and selecting **Auto**.
 
 > [!NOTE]
-> The workshop is set to use Claude Sonnet 4.5 as it's the model used while authoring the workshop. This isn't an indication of preference of one model over another.
+> This workshop uses **Auto** model selection so Copilot can choose an appropriate model for each task, as described in [About Copilot auto model selection][copilot-auto-model-selection].
 
 6. Send the following prompt to have Copilot create a new endpoint to return all publishers, along with the matching tests. Asking for tests explicitly ensures we'll see the `python-tests.instructions.md` file pulled into context:
 
@@ -195,6 +195,7 @@ Next we'll use plan mode to [generate the filtering feature][next-lesson] on top
 [instruction-files]: https://code.visualstudio.com/docs/copilot/copilot-customization
 [repository-custom-instructions]: https://docs.github.com/copilot/how-tos/configure-custom-instructions/add-repository-instructions
 [python-type-hints]: https://docs.python.org/3/library/typing.html
+[copilot-auto-model-selection]: https://docs.github.com/en/copilot/concepts/models/auto-model-selection
 [instructions-best-practices]: https://docs.github.com/enterprise-cloud@latest/copilot/using-github-copilot/coding-agent/best-practices-for-using-copilot-to-work-on-tasks#adding-custom-instructions-to-your-repository
 [personal-instructions]: https://docs.github.com/copilot/customizing-copilot/adding-personal-custom-instructions-for-github-copilot
 [copilot-instructions-five-tips]: https://github.blog/ai-and-ml/github-copilot/5-tips-for-writing-better-custom-instructions-for-copilot/

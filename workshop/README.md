@@ -21,7 +21,7 @@ By the end of this workshop, you will be able to:
 
 Before attending this workshop, please ensure you have:
 
-- [ ] A GitHub account with an active **Copilot Pro, Pro+, Business, or Enterprise** subscription
+- [ ] A GitHub account with an active **Copilot Pro, Pro+, Student, Business, or Enterprise** subscription
 - [ ] Basic familiarity with terminal/command line operations
 - [ ] Git installed and configured
 
